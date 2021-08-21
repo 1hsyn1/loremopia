@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="story"
+            type="com.huseyinbulbul.loremopia.common.data.Story" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginTop="32dp">
+
+    <ImageView
+        android:id="@+id/iv_story_image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        android:scaleType="centerCrop"
+        app:ImageUrl="@{story.image.small}"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/iv_story_image"
+        app:layout_constraintTop_toBottomOf="@+id/iv_story_image"
+        app:layout_constraintEnd_toEndOf="@+id/iv_story_image"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:text="@{story.name}"/>
+
+    <TextView
+        android:id="@+id/tv_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/tv_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        app:layout_constraintEnd_toEndOf="@+id/tv_name"
+        android:textColor="@color/white"
+        android:alpha="0.7"
+        android:textSize="14sp"
+        android:text="@{story.category}"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

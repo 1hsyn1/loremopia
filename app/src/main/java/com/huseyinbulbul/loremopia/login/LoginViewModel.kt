@@ -2,6 +2,7 @@ package com.huseyinbulbul.loremopia.login
 
 import com.huseyinbulbul.loremopia.R
 import com.huseyinbulbul.loremopia.common.BaseViewModel
+import com.huseyinbulbul.loremopia.list.ListActivity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -22,5 +23,7 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
             showMessageStringId.value = R.string.wrong_password
             return
         }
+
+        openActivity.value = ListActivity::class.java
     }
 }
