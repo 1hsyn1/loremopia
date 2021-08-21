@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Loremopia</string>
+    <string name="banner_text">Look. Pretty, isn’t it? Perfectly balanced. As all things should be.</string>
+    <string name="continue_c">CONTINUE</string>
+    <string name="error">An error occured.</string>
+    <string name="meditations">Meditations</string>
+    <string name="ok">Ok</string>
+    <string name="password">Password</string>
+    <string name="short_username">Username should be longer than two characters.</string>
+    <string name="sign_in_meditopia">Sign in to Meditopia</string>
+    <string name="stories">Stories</string>
+    <string name="username">Username</string>
+    <string name="wrong_password">Password should contain a number and a capital letter and should be longer than 6 characters.</string>
+</resources>
