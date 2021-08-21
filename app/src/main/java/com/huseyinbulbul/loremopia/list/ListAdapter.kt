@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.huseyinbulbul.loremopia.R
+import com.huseyinbulbul.loremopia.common.LoginManager
 import com.huseyinbulbul.loremopia.common.data.ListResult
 import com.huseyinbulbul.loremopia.common.data.Story
+import com.huseyinbulbul.loremopia.databinding.ItemBannerBinding
 import com.huseyinbulbul.loremopia.databinding.ItemListTitleBinding
 import com.huseyinbulbul.loremopia.databinding.ItemStoriesBinding
 import com.huseyinbulbul.loremopia.list.meditation.MeditationOnClick
@@ -23,7 +25,7 @@ class ListAdapter(val listResult: ListResult,
             0 -> LoadingViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_loading, parent, false))
             1 -> TitleViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_list_title, parent, false))
             2 -> MeditationsViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_meditations, parent, false))
-            3 -> BannerViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_banner, parent, false))
+            3 -> BannerViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_banner, parent, false))
             4 -> StoriesViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_stories, parent, false))
             else -> LoadingViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_loading, parent, false))
         }
@@ -38,6 +40,7 @@ class ListAdapter(val listResult: ListResult,
             }
             is MeditationsViewHolder -> holder.bind(listResult.meditations, meditationOnClick)
             is StoriesViewHolder -> holder.bind(listResult.stories, storyOnClick)
+            is BannerViewHolder -> holder.bind()
         }
     }
 
@@ -77,7 +80,12 @@ class ListAdapter(val listResult: ListResult,
     }
 
     class LoadingViewHolder(v: View): RecyclerView.ViewHolder(v)
-    class BannerViewHolder(v: View): RecyclerView.ViewHolder(v)
+
+    class BannerViewHolder(val binding: ItemBannerBinding): RecyclerView.ViewHolder(binding.root){
+        fun bind(){
+            binding.tvText.text = String.format(binding.tvText.context.getString(R.string.banner_text), LoginManager.username)
+        }
+    }
 
     class TitleViewHolder(val binding: ItemListTitleBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(title: String){

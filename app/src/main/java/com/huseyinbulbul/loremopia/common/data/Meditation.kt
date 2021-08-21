@@ -7,5 +7,5 @@ data class Meditation(
     @SerializedName("subtitle") val subtitle: String?,
     @SerializedName("image") val image: Image?,
     @SerializedName("releaseDate") val releaseDate: Long?,
-    @SerializedName("content") val content: String
+    @SerializedName("content") val content: String?
 )

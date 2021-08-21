@@ -26,9 +26,7 @@ class MeditationsAdapter(private val list: List<Meditation>, val meditationOnCli
         fun bind(meditation: Meditation, meditationOnClick: MeditationOnClick?){
             binding.meditation = meditation
             meditationOnClick?.let { onClick ->
-                Log.i("hus","0")
                 binding.root.setOnClickListener {
-                    Log.i("hus","1")
                     onClick.meditationClicked(meditation)
                 }
             }

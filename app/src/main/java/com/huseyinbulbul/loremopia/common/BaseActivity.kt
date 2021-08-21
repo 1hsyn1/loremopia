@@ -37,16 +37,13 @@ open class BaseActivity : AppCompatActivity(){
             if(it) showLoading() else hideLoading()
         }
 
-        Log.i("hus", "observing title text")
         _viewModel.titleText.observe(this){
-            Log.i("hus", "title string $it")
             if(it != ""){
                 setPageTitle(it)
             }
         }
 
         _viewModel.titleStringId.observe(this){
-            Log.i("hus", "title id $it")
             if(it > -1){
                 setPageTitle(it)
             }
@@ -57,7 +54,6 @@ open class BaseActivity : AppCompatActivity(){
         }
 
         _viewModel.shouldShowLeftIcon.observe(this){
-            Log.i("hus", "show left")
             showLeftIcon(it)
         }
 
@@ -180,7 +176,7 @@ open class BaseActivity : AppCompatActivity(){
         if (!isOnScreen())
             return
 
-        iv_right_icon.setImageDrawable(resources.getDrawable(id))
+        iv_right_icon.setImageDrawable(resources.getDrawable(id, null))
     }
 
     fun setLeftIcon(bitmap: Bitmap) {
@@ -194,7 +190,7 @@ open class BaseActivity : AppCompatActivity(){
         if (!isOnScreen())
             return
 
-        iv_left_icon.setImageDrawable(resources.getDrawable(id))
+        iv_left_icon.setImageDrawable(resources.getDrawable(id, null))
     }
 
     fun setOnRightIconClicked(listener: View.OnClickListener) {
@@ -219,7 +215,6 @@ open class BaseActivity : AppCompatActivity(){
     }
 
     fun showMessage(message: String) {
-        Log.i("hus","2")
         val showMessage = if(message.isEmpty()) getString(R.string.error) else message
         AlertDialog.Builder(this)
             .setMessage(showMessage)
